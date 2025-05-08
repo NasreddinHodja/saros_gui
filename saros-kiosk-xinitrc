@@ -30,6 +30,6 @@ else
   echo "Found external display: $DISPLAY_ID"
 fi
 
-PROFILE_PATH="/home/username/.mozilla/firefox/<profile_folder>"
+PROFILE_PATH=$(cat ./.firefox-profile-path)
 
 DISPLAY=$DISPLAY_ID firefox --kiosk --profile "$PROFILE_PATH" https://localhost:3000
