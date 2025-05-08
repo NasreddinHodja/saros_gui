@@ -1,0 +1,15 @@
+#!/bin/sh
+
+xset -dpms
+xset s off
+xset s noblank
+
+cd ~/Prog/saros_gui/
+nvm use
+yarn dev &
+
+until curl -s http://localhost:3000 > /dev/null; do
+  sleep 1
+done
+
+firefox --kiosk https://localhost:3000
