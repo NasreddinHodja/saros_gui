@@ -14,9 +14,9 @@ const clearDrawedCards = () => {
 
 <template>
   <div
-    class="h-full w-full flex flex-col gap-4 items-center justify-center bg-black"
+    class="h-full w-full flex flex-col gap-6 items-center justify-center bg-black"
   >
-    <div class="flex flex-row gap-4 max-w-screen">
+    <div class="flex flex-row gap-4 max-w-full">
       <div v-for="card in drawedCards" :key="card.path">
         <CardDisplay
           :name="card.name"

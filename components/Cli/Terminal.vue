@@ -76,15 +76,19 @@ const handleCommand = (command: string) => {
 
 <template>
   <div
-    id="container"
-    class="flex flex-col gap-2 border-4 h-2/6 w-3/5 items-start justify-start p-5 overflow-hidden"
+    class="border-4 h-2/6 w-[700px] items-start justify-start p-5 text-white"
     @click="handleClick"
   >
-    <div v-for="historyItem in history" class="flex flex-col">
-      <span class="font-mono">>&nbsp;{{ historyItem.command }}</span>
-      <pre class="font-mono">{{ historyItem.output }}</pre>
-    </div>
+    <div
+      id="container"
+      class="w-full h-full flex flex-col items-start justify-start overflow-hidden"
+    >
+      <div v-for="historyItem in history" class="flex flex-col w-full mb-4">
+        <span class="font-mono">>&nbsp;{{ historyItem.command }}</span>
+        <pre class="font-mono">{{ historyItem.output }}</pre>
+      </div>
 
-    <CliPrompt ref="prompt-ref" @command="handleCommand" />
+      <CliPrompt ref="prompt-ref" @command="handleCommand" />
+    </div>
   </div>
 </template>

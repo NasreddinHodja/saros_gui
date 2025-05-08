@@ -6,12 +6,16 @@ defineProps<{
 </script>
 
 <template>
-  <div class="p-4 flex flex-col items-center justify-around flex- h-[50vh]">
-    <div class="w-full h-[90%]">
-      <img :src="path" :alt="name" class="w-full h-full object-contain" />
-    </div>
-    <div class="text-center text-sm mt-2">
-      {{ name }}
+  <div
+    class="p-4 w-[30vh] flex flex-col items-center justify-around flex- h-[50vh]"
+  >
+    <div class="flex h-full w-full flex-col gap-4">
+      <div class="w-full h-[90%]">
+        <img :src="path" :alt="name" class="w-full h-full object-fill" />
+      </div>
+      <div class="text-center text-base mt-2 font-bold text-white">
+        {{ name }}
+      </div>
     </div>
   </div>
 </template>

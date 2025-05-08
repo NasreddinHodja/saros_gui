@@ -16,7 +16,7 @@ const handleCommand = () => {
 
 <template>
   <div class="flex w-full">
-    <span>>&nbsp;</span>
+    <span class="font-bold">>&nbsp;</span>
     <input
       ref="input-ref"
       v-model="input"
