@@ -37,7 +37,5 @@ LOG_FILE="./kiosk.log"
 
   read -r PROFILE_PATH < ./.firefox-profile-path
 
-  echo $PROFILE_PATH
-  echo $DISPLAY_ID
   firefox --no-remote --kiosk --profile "$PROFILE_PATH" --window-position=0,0 --width=1920 --height=1080 http://localhost:3000
 } > "$LOG_FILE" 2>&1
