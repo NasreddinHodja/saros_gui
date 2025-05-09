@@ -12,6 +12,17 @@ const handleCommand = () => {
   emit("command", input.value);
   input.value = "";
 };
+
+const handleBlur = () => {
+  setTimeout(() => {
+    if (inputRef.value) {
+      inputRef.value.focus();
+      console.log("Focus called on input element");
+    } else {
+      console.log("Input reference not available");
+    }
+  }, 20);
+};
 </script>
 
 <template>
@@ -24,6 +35,7 @@ const handleCommand = () => {
       type="text"
       class="w-full font-mono p-0 text-white bg-black outline-none"
       :autofocus="true"
+      @blur="handleBlur"
     />
   </div>
 </template>
