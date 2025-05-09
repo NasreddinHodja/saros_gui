@@ -1,35 +1,42 @@
 #!/bin/sh
 
-xset -dpms
-xset s off
-xset s noblank
+LOG_FILE="./kiosk.log"
 
-while true; do
+{
+  xset -dpms
+  xset s off
+  xset s noblank
+
+  while true; do
+    DISPLAY_ID=$(xrandr | grep " connected" | grep -v "eDP" | awk '{print $1}' | head -n 1)
+
+    if [ -n "$DISPLAY_ID" ]; then
+      break
+    fi
+
+    sleep 1
+  done
+
+  cd ~/Prog/saros_gui/
+  . ~/.nvm/nvm.sh
+  # nvm use
+  # yarn dev &
+
+  until curl -s http://localhost:3000 > /dev/null; do
+    sleep 1
+  done
+
   DISPLAY_ID=$(xrandr | grep " connected" | grep -v "eDP" | awk '{print $1}' | head -n 1)
-  
-  if [ -n "$DISPLAY_ID" ]; then
-    break
+
+  if [ -z "$DISPLAY_ID" ]; then
+    echo "No external display found"
+  else
+    echo "Found external display: $DISPLAY_ID"
   fi
 
-  sleep 1
-done
+  read -r PROFILE_PATH < ./.firefox-profile-path
 
-cd ~/Prog/saros_gui/
-nvm use
-yarn dev &
-
-until curl -s http://localhost:3000 > /dev/null; do
-  sleep 1
-done
-
-DISPLAY_ID=$(xrandr | grep " connected" | grep -v "eDP" | awk '{print $1}' | head -n 1)
-
-if [ -z "$DISPLAY_ID" ]; then
-  echo "No external display found"
-else
-  echo "Found external display: $DISPLAY_ID"
-fi
-
-PROFILE_PATH=$(cat ./.firefox-profile-path)
-
-DISPLAY=$DISPLAY_ID firefox --kiosk --profile "$PROFILE_PATH" https://localhost:3000
+  echo $PROFILE_PATH
+  echo $DISPLAY_ID
+  firefox --display="$DISPLAY_ID" --no-remote --kiosk --profile "$PROFILE_PATH" http://localhost:3000
+} > "$LOG_FILE" 2>&1
