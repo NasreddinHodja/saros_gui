@@ -14,9 +14,9 @@ const clearDrawedCards = () => {
 
 <template>
   <div
-    class="h-full w-full flex flex-col gap-6 items-center justify-center bg-black"
+    class="h-full w-full flex flex-col gap-16 items-center justify-center bg-black"
   >
-    <div class="flex flex-row gap-4 max-w-full">
+    <div class="flex flex-row gap-4 max-w-full bg-blue-500">
       <div v-for="card in drawedCards" :key="card.path">
         <CardDisplay
           :name="card.name"
@@ -26,6 +26,10 @@ const clearDrawedCards = () => {
       </div>
     </div>
 
-    <CliTerminal @draw="drawRandomCards" @clear="clearDrawedCards" />
+    <CliTerminal
+      @draw="drawRandomCards"
+      @clear="clearDrawedCards"
+      class="bg-blue-500"
+    />
   </div>
 </template>

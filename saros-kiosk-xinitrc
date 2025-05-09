@@ -7,13 +7,7 @@ LOG_FILE="./kiosk.log"
   xset s off
   xset s noblank
 
-  while true; do
-    DISPLAY_ID=$(xrandr | grep " connected" | grep -v "eDP" | awk '{print $1}' | head -n 1)
-
-    if [ -n "$DISPLAY_ID" ]; then
-      break
-    fi
-
+  while ! xrandr | grep -q " connected" | grep -vq "eDP"; do
     sleep 1
   done
 
@@ -37,5 +31,11 @@ LOG_FILE="./kiosk.log"
 
   read -r PROFILE_PATH < ./.firefox-profile-path
 
-  firefox --no-remote --kiosk --profile "$PROFILE_PATH" --window-position=0,0 --width=1920 --height=1080 http://localhost:3000
+  firefox \
+    --no-remote \
+    --kiosk --profile "$PROFILE_PATH" \
+    --window-position=0,0 \
+    --width=1920 --height=1080 \
+    http://localhost:3000
+
 } > "$LOG_FILE" 2>&1
