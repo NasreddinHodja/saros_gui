@@ -27,5 +27,10 @@ const clearDrawedCards = () => {
     </div>
 
     <CliTerminal @draw="drawRandomCards" @clear="clearDrawedCards" />
+    <img src="@/public/e_logo.jpg" class="w-24 absolute bottom-10 left-10" />
+    <img
+      src="@/public/seed_logo.png"
+      class="w-40 absolute bottom-10 right-10"
+    />
   </div>
 </template>
