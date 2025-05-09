@@ -7,7 +7,7 @@ LOG_FILE="./kiosk.log"
   xset s off
   xset s noblank
 
-  while ! xrandr | grep -q " connected" | grep -vq "eDP"; do
+  while ! xrandr | grep " connected" | grep -v "eDP"; do
     sleep 1
   done
 
