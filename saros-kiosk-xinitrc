@@ -19,14 +19,15 @@ LOG_FILE="./kiosk.log"
 
   cd ~/Prog/saros_gui/
   . ~/.nvm/nvm.sh
-  # nvm use
-  # yarn dev &
+  nvm use
+  yarn dev &
 
   until curl -s http://localhost:3000 > /dev/null; do
     sleep 1
   done
 
   DISPLAY_ID=$(xrandr | grep " connected" | grep -v "eDP" | awk '{print $1}' | head -n 1)
+  xrandr --output eDP-1 --off
 
   if [ -z "$DISPLAY_ID" ]; then
     echo "No external display found"
@@ -38,5 +39,5 @@ LOG_FILE="./kiosk.log"
 
   echo $PROFILE_PATH
   echo $DISPLAY_ID
-  firefox --display="$DISPLAY_ID" --no-remote --kiosk --profile "$PROFILE_PATH" http://localhost:3000
+  firefox --no-remote --kiosk --profile "$PROFILE_PATH" --window-position=0,0 --width=1920 --height=1080 http://localhost:3000
 } > "$LOG_FILE" 2>&1
