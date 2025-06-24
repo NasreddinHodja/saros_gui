@@ -49,11 +49,15 @@ const executeCommand = (command: string): Command => {
       command,
       output: `
 Comandos disponíveis:
-- draw [número]: Tira o número especificado de cartas (de 1 a 5).
-  Exemplo: "draw 3" irá tirar 3 cartas.
-- clear: Limpa as cartas tiradas.
-- help: Exibe esta mensagem de ajuda.
-    `,
+- draw [número]: 
+  Tira o número especificado 
+  de cartas (de 1 a 5).
+  Exemplo: 
+  "draw 3" irá tirar 3 cartas.
+- clear: 
+  Limpa as cartas tiradas.
+- help: 
+  Exibe esta mensagem de ajuda.`,
     };
   }
   return {
@@ -75,20 +79,22 @@ const handleCommand = (command: string) => {
 </script>
 
 <template>
-  <div
-    class="border-4 h-2/6 w-[700px] items-start justify-start p-5 text-white"
-    @click="handleClick"
-  >
+  <div class="w-full px-4 h-[65%] md:h-2/6 flex items-center justify-center">
     <div
-      id="container"
-      class="w-full h-full flex flex-col items-start justify-start overflow-hidden"
+      class="border-4 h-full w-full md:w-[700px] flex items-start justify-start p-5 text-white"
+      @click="handleClick"
     >
-      <div v-for="historyItem in history" class="flex flex-col w-full mb-4">
-        <span class="font-mono">>&nbsp;{{ historyItem.command }}</span>
-        <pre class="font-mono">{{ historyItem.output }}</pre>
-      </div>
+      <div
+        id="container"
+        class="w-full h-full flex flex-col items-start justify-start overflow-hidden"
+      >
+        <div v-for="historyItem in history" class="flex flex-col w-full mb-4">
+          <span class="font-mono">>&nbsp;{{ historyItem.command }}</span>
+          <pre class="font-mono">{{ historyItem.output }}</pre>
+        </div>
 
-      <CliPrompt ref="prompt-ref" @command="handleCommand" />
+        <CliPrompt ref="prompt-ref" @command="handleCommand" />
+      </div>
     </div>
   </div>
 </template>

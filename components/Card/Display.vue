@@ -7,13 +7,15 @@ defineProps<{
 
 <template>
   <div
-    class="p-4 w-[30vh] flex flex-col items-center justify-around flex- h-[50vh]"
+    class="p-4 w-[45vh] md:w-[26vh] flex flex-col items-center justify-around"
   >
     <div class="flex h-full w-full flex-col gap-4">
-      <div class="w-full h-[90%]">
+      <div class="w-full h-[380px]">
         <img :src="path" :alt="name" class="w-full h-full object-fill" />
       </div>
-      <div class="text-center text-base mt-2 font-bold text-white">
+      <div
+        class="flex justify-center items-center text-center text-base mt-2 font-bold text-white"
+      >
         {{ name }}
       </div>
     </div>
