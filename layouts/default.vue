@@ -1,7 +1,7 @@
 <script setup lang="ts">
 useHead({
   titleTemplate: (titleChunk) =>
-    titleChunk ? `${titleChunk} - S.E.E.D.` : "S.E.E.D.",
+    titleChunk ? `${titleChunk} - S.E.E.D. SAROS` : "S.E.E.D. SAROS",
   meta: [
     { property: "og:title", content: "S.E.E.D. SAROS" },
     { property: "og:description", content: "S.E.E.D. Tarot Bot" },
@@ -10,6 +10,7 @@ useHead({
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:image", content: "/seed_logo.png" },
   ],
+  link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
 });
 </script>
 
