@@ -24,12 +24,12 @@ const executeCommand = (command: string): Command => {
   if (commandParts[0] === "draw") {
     if (commandParts.length === 1) {
       emit("draw", 1);
-      return { command, output: "Tirando 1 carta..." };
+      return { command, output: "Drawing 1 card..." };
     } else {
       const number = parseInt(commandParts[1]);
 
       if (isNaN(number)) {
-        return { command, output: "Erro: Número inválido." };
+        return { command, output: "Error: Invalid number." };
       } else if (number >= 1 && number <= 5) {
         emit("draw", number);
         return {
@@ -37,33 +37,35 @@ const executeCommand = (command: string): Command => {
           output: `Drawing ${number} card${number === 1 ? "" : "s"}...`,
         };
       } else {
-        return { command, output: "O número de cartas deve ser entre 1 e 5." };
+        return {
+          command,
+          output: "Error: Number of cards must be between 1 and 5.",
+        };
       }
     }
   } else if (commandParts[0] === "clear") {
     history.value = [];
     emit("clear");
-    return { command, output: "Limpando a tela..." };
+    return { command, output: "Clearing screen..." };
   } else if (commandParts[0] === "help") {
     return {
       command,
       output: `
-Comandos disponíveis:
+Available commands:
 - draw [número]: 
-  Tira o número especificado 
-  de cartas (de 1 a 5).
-  Exemplo: 
-  "draw 3" irá tirar 3 cartas.
+  Draws specified number of cards 
+  (from 1 to 5).
+  Example: 
+  "draw 3" will draw 3 cards.
 - clear: 
-  Limpa as cartas tiradas.
+  Clears the screen.
 - help: 
-  Exibe esta mensagem de ajuda.`,
+  Shows this help message.`,
     };
   }
   return {
     command,
-    output:
-      "Erro: comando não encontrado.\nDigite 'help' para ver os comandos disponíveis.",
+    output: "Error: command not found.\nType 'help' to see available commands.",
   };
 };
 
@@ -89,8 +91,10 @@ const handleCommand = (command: string) => {
         class="w-full h-full flex flex-col items-start justify-start overflow-hidden"
       >
         <div v-for="historyItem in history" class="flex flex-col w-full mb-4">
-          <span class="font-mono">>&nbsp;{{ historyItem.command }}</span>
-          <pre class="font-mono">{{ historyItem.output }}</pre>
+          <span class="font-mono text-wrap"
+            >>&nbsp;{{ historyItem.command }}</span
+          >
+          <pre class="font-mono text-wrap">{{ historyItem.output }}</pre>
         </div>
 
         <CliPrompt ref="prompt-ref" @command="handleCommand" />
