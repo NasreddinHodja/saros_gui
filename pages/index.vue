@@ -18,7 +18,7 @@ const clearDrawedCards = () => {
   >
     <div class="flex flex-col md:flex-row gap-4 max-w-full">
       <div v-for="card in drawedCards" :key="card.path">
-        <CardDisplay
+        <CardView
           :name="card.name"
           :path="card.path"
           class="transition-opacity duration-500 delay-500"
@@ -26,13 +26,19 @@ const clearDrawedCards = () => {
       </div>
     </div>
 
+    <ExpandableCard
+      name="oieoieoeieoe.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasdfkasdaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaf asdf"
+      originUrl="http://localhost:3000/cards/u78H1KEgJV3aUaw2aYSRraxSVyYeSs6JQuVkKmB9d0GIaOpTWnVHTkJQptIaOICY1hbR4W5JGYCQg8CFaw37jCAq5pJCXcjDD8zI6AOXHq0JcBQOIEAKISN6mLmZo2I4eSU85MEftnjuYpBhUDaWqGKSUCj55GJMiJyNGaxraEimOagMgaZ8q2rmY87nach3WFu7crUK5Npdput52P7f8PgOYRgm9aZ0MAAAAASUVORK5CYII.png"
+      thumbUrl="http://localhost:3000/cards/u78H1KEgJV3aUaw2aYSRraxSVyYeSs6JQuVkKmB9d0GIaOpTWnVHTkJQptIaOICY1hbR4W5JGYCQg8CFaw37jCAq5pJCXcjDD8zI6AOXHq0JcBQOIEAKISN6mLmZo2I4eSU85MEftnjuYpBhUDaWqGKSUCj55GJMiJyNGaxraEimOagMgaZ8q2rmY87nach3WFu7crUK5Npdput52P7f8PgOYRgm9aZ0MAAAAASUVORK5CYII.png"
+    />
+
     <CliTerminal
       @draw="drawRandomCards"
       @clear="clearDrawedCards"
       class="mb-28"
     />
     <div
-      class="w-full fixed bottom-0 left-0 bg-black z-50 flex justify-between items-center pb-6 pt-4 px-6"
+      class="w-full fixed bottom-0 left-0 bg-black z-10 flex justify-between items-center pb-6 pt-4 px-6"
     >
       <a href="https://seed.computer" target="_blank" rel="noopener noreferrer">
         <img src="@/public/e_logo.jpg" class="w-24" />

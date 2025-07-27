@@ -17,9 +17,6 @@ const handleBlur = () => {
   setTimeout(() => {
     if (inputRef.value) {
       inputRef.value.focus();
-      console.log("Focus called on input element");
-    } else {
-      console.log("Input reference not available");
     }
   }, 20);
 };
