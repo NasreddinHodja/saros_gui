@@ -19,5 +19,17 @@ useHead({
     class="h-screen w-screen flex flex-col bg-black text-white font-mono overflow-hidden"
   >
     <NuxtPage />
+
+    <div
+      class="w-full fixed bottom-0 left-0 bg-black z-10 flex justify-between items-center pb-6 pt-4 px-6"
+    >
+      <a href="https://seed.computer" target="_blank" rel="noopener noreferrer">
+        <img src="@/public/e_logo.jpg" class="w-24" />
+      </a>
+
+      <a href="https://seed.computer" target="_blank" rel="noopener noreferrer">
+        <img src="@/public/seed_logo.png" class="w-40" />
+      </a>
+    </div>
   </div>
 </template>

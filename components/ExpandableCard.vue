@@ -17,10 +17,17 @@ const collapseImage = () => {
 </script>
 
 <template>
-  <div>
-    <div @click="expandImage">
-      <img :src="thumbUrl" />
-      {{ name }}
+  <div class="flex flex-col px-2 inline-block">
+    <div
+      @click="expandImage"
+      class="flex flex-col cursor-pointer items-center gap-3"
+    >
+      <div class="overflow-hidden">
+        <img :src="thumbUrl" class="bject-cover w-full" />
+      </div>
+      <div class="text-center text-wrap break-all w-full">
+        {{ name }}
+      </div>
     </div>
     <FullCardView
       v-if="isExpanded"

@@ -91,9 +91,9 @@ const handleCommand = (command: string) => {
         class="w-full h-full flex flex-col items-start justify-start overflow-hidden"
       >
         <div v-for="historyItem in history" class="flex flex-col w-full mb-4">
-          <span class="font-mono text-wrap"
-            >>&nbsp;{{ historyItem.command }}</span
-          >
+          <span class="font-mono text-wrap">
+            >&nbsp;{{ historyItem.command }}
+          </span>
           <pre class="font-mono text-wrap">{{ historyItem.output }}</pre>
         </div>
 
