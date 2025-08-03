@@ -52,7 +52,7 @@ const executeCommand = (command: string): Command => {
       command,
       output: `
 Available commands:
-- draw [número]: 
+- draw [number]:
   Draws specified number of cards 
   (from 1 to 5).
   Example: 
