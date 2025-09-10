@@ -81,7 +81,7 @@ const handleCommand = (command: string) => {
 </script>
 
 <template>
-  <div class="w-full px-4 h-[65%] md:h-2/6 flex items-center justify-center">
+  <div class="w-full px-4 h-[400px] flex items-center justify-center">
     <div
       class="border-4 h-full w-full md:w-[700px] flex items-start justify-start p-5 text-white"
       @click="handleClick"
